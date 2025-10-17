@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Agendas</string>
+    <string name="title">Gestión de Agendas</string>
+    <string name="add_appointment">Agregar Agenda</string>
+    <string name="remove_all_appointmetns">Eliminar Agendas</string>
+    <string name="date">Fecha:</string>
+    <string name="activity">Asunto:</string>
+    <string name="subject">Actividad:</string>
+</resources>
