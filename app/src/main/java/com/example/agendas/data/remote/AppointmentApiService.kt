@@ -13,8 +13,11 @@ interface AppointmentApiService {
     suspend fun getAppointments(): Response<List<Appointment>>
 
     @POST("/api/appointments")
-    suspend fun addAppointment(@Body agenda: Appointment): Response<Appointment>
+    suspend fun addAppointment(@Body agenda: Appointment): Response<Void>
 
     @DELETE("/api/appointments/{id}")
     suspend fun deleteAppointment(@Path("id") id: Long): Response<Void>
+
+    @DELETE("/api/appointments")
+    suspend fun deleteAppointments(): Response<Void>
 }

@@ -20,8 +20,8 @@ class ServiceAppointmentHandler(
         lifecycleScope.launch {
             val success = agendaViewModel.deleteAppointment(id)
             if (success) {
-                Toast.makeText(context, "appointment deleted", Toast.LENGTH_SHORT).show()
-                agendaViewModel.fetchAppointments() // reload list after of appointment added
+                Toast.makeText(context, "agenda eliminada", Toast.LENGTH_SHORT).show()
+                agendaViewModel.fetchAppointments() // reload list after of appointment deleted
             } else {
                 Toast.makeText(context, "Ocurrio un error al eliminar la agenda", Toast.LENGTH_SHORT).show()
             }
@@ -43,7 +43,7 @@ class ServiceAppointmentHandler(
                 val activity = txtEditActivity.text.toString()
 
                 if (date.isNotEmpty() && subject.isNotEmpty() && activity.isNotEmpty()) {
-                    val newAppointment = Appointment(date = date, subject = subject, activity = activity)
+                    val newAppointment = Appointment(date = date, subject = subject, activity = activity, showDate = null)
                     lifecycleScope.launch {
                         val success = agendaViewModel.addAppointment(newAppointment)
                         if (success) {
@@ -55,6 +55,28 @@ class ServiceAppointmentHandler(
                     }
                 } else {
                     Toast.makeText(context, "Todos los campos son obligatorios", Toast.LENGTH_SHORT).show()
+                }
+            }
+            .setNegativeButton("Cancelar", null)
+            .create()
+
+        dialog.show()
+    }
+
+    fun removeAppointments() {
+        val dialog = AlertDialog.Builder(context)
+            .setTitle("Eliminar Agendas")
+            .setMessage("Esta acicon eliminara todas las agendas creadas, esta seguro?")
+            .setPositiveButton("Eliminar") { _, _ ->
+
+                lifecycleScope.launch {
+                    val success = agendaViewModel.deleteAppointments()
+                    if (success) {
+                        Toast.makeText(context, "Agendas eliminadas", Toast.LENGTH_SHORT).show()
+                        agendaViewModel.fetchAppointments()
+                    } else {
+                        Toast.makeText(context, "Ocurrio un error al eliminar las agendas", Toast.LENGTH_SHORT).show()
+                    }
                 }
             }
             .setNegativeButton("Cancelar", null)

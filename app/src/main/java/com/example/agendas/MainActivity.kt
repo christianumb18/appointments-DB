@@ -60,5 +60,9 @@ class MainActivity : AppCompatActivity() {
         binding.btnAddAppointment.setOnClickListener {
             appointmentHandler.addAppointment()
         }
+
+        binding.btnRemoveAppointments.setOnClickListener {
+            appointmentHandler.removeAppointments()
+        }
     }
 }

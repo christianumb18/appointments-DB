@@ -4,6 +4,6 @@
     <string name="add_appointment">Agregar Agenda</string>
     <string name="remove_all_appointmetns">Eliminar Agendas</string>
     <string name="date">Fecha:</string>
-    <string name="activity">Asunto:</string>
-    <string name="subject">Actividad:</string>
+    <string name="activity">Actividad:</string>
+    <string name="subject">Asunto:</string>
 </resources>

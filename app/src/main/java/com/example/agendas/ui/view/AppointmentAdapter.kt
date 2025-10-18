@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.agendas.data.model.Appointment
 import com.example.agendas.databinding.ItemAppointmentBinding
+import java.text.SimpleDateFormat
 
 class AppointmentAdapter(
     private var appointments: MutableList<Appointment>,
@@ -16,13 +17,14 @@ class AppointmentAdapter(
     inner class AppointmentViewHolder(private val binding: ItemAppointmentBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(agenda: Appointment) {
-            binding.txtFecha.text = agenda.date ?: ""
-            binding.txtAsunto.text = agenda.subject ?: ""
-            binding.txtActividad.text = agenda.activity ?: ""
+        fun bind(appointment: Appointment) {
+            val dateFormat: SimpleDateFormat = SimpleDateFormat("dd/MM/yyyy");
+            binding.txtFecha.text = dateFormat.format(appointment.showDate) ?: ""
+            binding.txtAsunto.text = appointment.subject ?: ""
+            binding.txtActividad.text = appointment.activity ?: ""
 
             binding.btnDelete.setOnClickListener {
-                onDeleteClick(agenda)
+                onDeleteClick(appointment)
             }
         }
     }

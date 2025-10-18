@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,8 +25,9 @@
                     android:layout_width="161dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="TextView"
+                    android:text="@string/date"
                     android:textColor="@color/black"
+                    android:textSize="16sp"
                     android:textStyle="bold"
                     tools:text="@string/date" />
 
@@ -34,7 +35,7 @@
                     android:id="@+id/txtFecha"
                     android:layout_width="302dp"
                     android:layout_height="wrap_content"
-                    android:textSize="12sp"
+                    android:textSize="14sp"
                     android:textStyle="italic" />
 
             </LinearLayout>
@@ -49,8 +50,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="TextView"
+                    android:text="@string/subject"
                     android:textColor="@color/black"
+                    android:textSize="16sp"
                     android:textStyle="bold"
                     tools:text="@string/subject" />
 
@@ -58,7 +60,7 @@
                     android:id="@+id/txtAsunto"
                     android:layout_width="302dp"
                     android:layout_height="wrap_content"
-                    android:textSize="12sp"
+                    android:textSize="14sp"
                     android:textStyle="italic" />
 
             </LinearLayout>
@@ -73,8 +75,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="TextView"
+                    android:text="@string/activity"
                     android:textColor="@color/black"
+                    android:textSize="16sp"
                     android:textStyle="bold"
                     tools:text="@string/activity" />
 
@@ -82,7 +85,7 @@
                     android:id="@+id/txtActividad"
                     android:layout_width="302dp"
                     android:layout_height="wrap_content"
-                    android:textSize="12sp"
+                    android:textSize="14sp"
                     android:textStyle="italic" />
 
             </LinearLayout>
@@ -98,16 +101,6 @@
             android:paddingTop="8dp">
 
             <!-- Botón de actualizar -->
-            <Button
-                android:id="@+id/btnUpdate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:backgroundTint="@color/green"
-                android:text="Actualizar"
-                android:textAllCaps="false"
-                android:textColor="@android:color/white"
-                android:textSize="12dp" />
 
             <!-- Botón de eliminar -->
             <Button

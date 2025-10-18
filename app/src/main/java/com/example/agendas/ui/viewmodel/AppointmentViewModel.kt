@@ -16,15 +16,10 @@ class AppointmentViewModel : ViewModel() {
     private val _appointments = MutableStateFlow<List<Appointment>>(emptyList())
     val appointments: StateFlow<List<Appointment>> = _appointments.asStateFlow()
 
-    fun fetchAppointments(activityString: String? = null) {
+    fun fetchAppointments() {
         viewModelScope.launch {
             val completeList = repository.getAppoinments()
-            val filteredList = if (activityString.isNullOrEmpty()) {
-                completeList
-            } else {
-                completeList?.filter { it.activity.contains(activityString, ignoreCase = true) }
-            }
-            _appointments.value = filteredList ?: emptyList()
+            _appointments.value = completeList ?: emptyList()
         }
     }
 
@@ -39,6 +34,14 @@ class AppointmentViewModel : ViewModel() {
 
     suspend fun addAppointment(appointment: Appointment): Boolean {
         val result = repository.addAppointment(appointment)
+        if (result) {
+            fetchAppointments()
+        }
+        return result
+    }
+
+    suspend fun deleteAppointments(): Boolean {
+        val result = repository.deleteAppointments()
         if (result) {
             fetchAppointments()
         }

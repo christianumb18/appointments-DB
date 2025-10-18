@@ -63,4 +63,23 @@ class AppointmentRepository(private val apiService: AppointmentApiService) {
             false
         }
     }
+
+    suspend fun deleteAppointments(): Boolean {
+        return try {
+            val response = apiService.deleteAppointments()
+            if (response.isSuccessful) {
+                Log.d("deleteAppointments", "appointments deleted.")
+                true
+            } else {
+                Log.e(
+                    "deleteAppointments",
+                    "Error while delete appointments: ${response.code()} - ${response.message()}"
+                )
+                false
+            }
+        } catch (e: Exception) {
+            Log.e("deleteAppointments", "Error: ${e.localizedMessage}")
+            false
+        }
+    }
 }
